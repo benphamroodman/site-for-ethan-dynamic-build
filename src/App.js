@@ -5,10 +5,6 @@ emailjs.init("mgaNBzJe8ztZN05a-");
 
 class App extends React.Component {
 
-  constructor(props) {
-    super(props);
-  }
-
   sendmail() {
     
     let fullName = (document.getElementById("name").value);
@@ -23,8 +19,14 @@ class App extends React.Component {
       message: userMessage
     }
 
-    emailjs.send('service_lyth09b', 'template_yn9gvci', contactParams).then(function (res) {});
-    alert("Email sent!");
+    emailjs.send('service_lyth09b', 'template_qt3665h', contactParams)
+    .then((res) => {
+      alert("Email sent!", res.status, res.text);
+    }, (err) => {
+      alert("Email failed to send.", err);
+    });
+
+    alert("made it here");
   }
   
   render() {
@@ -33,9 +35,14 @@ class App extends React.Component {
         src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js">
       </script>
       
+      {/*Take these scripts out unless I need Popper*/}
+      <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+
       <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
         <div class="container">
-          <a class="navbar-brand" href="#page-top">E<i class="fa-solid fa-seedling"></i>han's G<i class="fa-solid fa-tree"></i>rdens</a>
+          <a class="navbar-brand" href="#page-top">G<i class="fa-solid fa-tree"></i>rdens of E<i class="fa-solid fa-seedling"></i>han</a>
           <button class="navbar-toggler text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             Menu
             <i class="fas fa-bars"></i>
@@ -57,7 +64,7 @@ class App extends React.Component {
             {/* Masthead Avatar Image*/}
             <img class="masthead-avatar mb-5" src="ethan-logo.png" alt="..." />
             {/* Masthead Text*/}
-            <h1 class="masthead-text text-uppercase mb-0">E<i class="fa-solid fa-seedling"></i>han's<br />G<i class="fa-solid fa-tree"></i>rdens</h1>
+            <h1 class="masthead-text text-uppercase mb-0">G<i class="fa-solid fa-tree"></i>rdens<br/>of E<i class="fa-solid fa-seedling"></i>han</h1>
           </div>
           {/* Icon Divider*/}
           <div class="divider-custom divider-light">
@@ -86,7 +93,7 @@ class App extends React.Component {
             {/* Services Item 1*/}
             <div class="col-md-6 col-lg-4 mb-5">
               <div class="services-item mx-auto" data-bs-toggle="modal" data-bs-target="#servicesModal1">
-                <div class="services-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+                <div class="services-item-caxtion d-flex align-items-center justify-content-center h-100 w-100">
                   <div class="services-item-caption-content text-center text-white">Garden Coaching</div>
                 </div>
                 <img class="img-fluid" src="assets/img/services/cabin.png" alt="..." />
@@ -226,7 +233,7 @@ class App extends React.Component {
                 {/**/}
                 <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3">Error sending message!</div></div>
                 {/* Submit Button*/}
-                <button class="btn btn-primary btn-xl" id="submitButton" type="submit" onclick={this.sendmail.bind(this)}>Send</button>
+                <button class="btn btn-primary btn-xl" id="submitButton" type="submit" onClick={this.sendmail.bind(this)}>Send</button>
               </form>
             </div>
           </div>
