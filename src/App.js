@@ -1,6 +1,8 @@
 import './App.css';
 import emailjs from '@emailjs/browser';
 import React from 'react';
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
 emailjs.init("mgaNBzJe8ztZN05a-");
 
 class App extends React.Component {
@@ -17,6 +19,10 @@ class App extends React.Component {
       from_email: userEmail,
       from_phone: userPhone,
       message: userMessage
+    }
+
+    handleModal() {
+      {/* Fill in */}
     }
 
     emailjs.send('service_lyth09b', 'template_qt3665h', contactParams)
@@ -93,7 +99,7 @@ class App extends React.Component {
             {/* Services Item 1*/}
             <div class="col-md-6 col-lg-4 mb-5">
               <div class="services-item mx-auto" data-bs-toggle="modal" data-bs-target="#servicesModal1">
-                <div class="services-item-caxtion d-flex align-items-center justify-content-center h-100 w-100">
+                <div class="services-item-caption d-flex align-items-center justify-content-center h-100 w-100">
                   <div class="services-item-caption-content text-center text-white">Garden Coaching</div>
                 </div>
                 <img class="img-fluid" src="assets/img/services/cabin.png" alt="..." />
